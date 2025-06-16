@@ -1,0 +1,485 @@
+/* src/pages/FitnessCoachWebsitesPage.module.css */
+
+/* Generic styles for all sections on this page */
+.container { /* Keeping non-color vars */
+    max-width: none;
+  margin: 0;
+  padding: 0 var(--padding-section-x);
+  width: 100%; /* Keeping non-color vars */
+  
+}
+
+.animatedSection {
+  opacity: 0;
+  transform: translateY(-150px);
+  transition: all 0.8s ease-out;
+}
+
+.animatedSection2 {
+    opacity: 0;
+  transform: translateY(150px);
+  transition: all 0.8s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sectionAnimate {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+/* Optional: Delays for staggered effects */
+.delay1 { animation-delay: 0.2s; }
+.delay2 { animation-delay: 0.4s; }
+.delay3 { animation-delay: 0.6s; }
+
+/* Animation keyframes */
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+    background-color: #2c769f;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden; /* To avoid horizontal scroll */
+    overflow-y: auto; /* Only one vertical scrollbar */
+}
+
+.sectionHeadline {
+  font-family: var(--font-family-headings); /* Keeping non-color vars */
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  margin-top: 0;
+  text-align: center;
+  color: #5ce1e6; /* Corresponds to --color-deep-teal */
+}
+
+.sectionSubheadline {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  color: #FFFFFF; /* Corresponds to --color-white */
+}
+
+section {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 50px;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  width: 100vw;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF; /* White */
+  overflow: hidden;
+  padding-top: var(--header-height); /* Keeping non-color vars */
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.35);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+}
+
+.heroBackgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 var(--padding-section-x); /* Keeping non-color vars */
+}
+
+.heroHeadline {
+  font-family: var(--font-family-headings); /* Keeping non-color vars */
+  font-size: 4rem;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  color: #FFFFFF; /* White */
+}
+
+.heroSubheadline {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  color: rgba(255,255,255,0.9);
+}
+
+.heroCtaButton {
+  display: inline-block;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  user-select: none;
+  background-color: #5ce1e6; /* Corresponds to --color-deep-teal */
+  color: #222; /* White */
+}
+
+.animatedLargeText {
+  font-size: 4.5rem; /* bigger text */
+  font-weight: 700;
+  color: white; /* your main blue color */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.15em;
+  background-color: whitesmoke;
+  margin-left: 2px;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.heroCtaButton:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Shadow Light */
+}
+
+.heroCtaButton:focus {
+  outline: 2px solid #5ce1e6; /* Corresponds to --color-deep-teal */
+  outline-offset: 2px;
+}
+
+
+/* Introduction/What We Offer Section */
+.introSection {
+  padding-bottom: 100px; /* Keeping non-color vars */
+  background-color: #2c769f; /* Corresponds to --color-header-bg */
+  color: white; /* White */
+}
+
+.introSection .sectionHeadline{
+    color: white;
+    padding-top: 50px;
+    margin-top: 0;
+}
+
+.introContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-md); /* Keeping non-color vars */
+  margin-top: 40px;
+}
+
+.introText {
+  flex: 2;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: left;
+  color: white !important;
+}
+
+.introText p {
+  font-size: 1.1rem;
+  color: white !important;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+}
+
+.introImage {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+.introImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Shadow Medium */
+  object-fit: cover;
+}
+
+
+/* Key Features Section */
+.featuresSection {
+  padding: var(--padding-section-y) 0; /* Keeping non-color vars */
+  padding-top: 100px;
+  background-color: #1A1A1A; /* Corresponds to --color-header-bg */
+  color: #FFFFFF; /* White */
+}
+
+.featuresSection .sectionHeadline {
+  color: #FFFFFF; /* White */
+  margin-bottom: 50px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-md); /* Keeping non-color vars */
+  justify-items: center;
+}
+
+.featureItem {
+  background-color: #101010; /* Corresponds to --color-darker-teal */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Shadow Medium */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #5ce1e6; /* Corresponds to --color-deep-teal */
+}
+
+.featureItem h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #5ce1e6; /* Corresponds to --color-deep-teal */
+}
+
+.featureItem p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+
+/* Our Process for Your Website Section */
+.processSection {
+  padding: var(--padding-section-y) 0;
+  padding-top:150px;
+  padding-bottom: 150px; /* Keeping non-color vars */
+  background-color: #1A1A1A; /* Corresponds to --color-header-bg */
+  color: #FFFFFF; /* White */
+}
+
+.processSection .sectionHeadline {
+  color: #5ce1e6; /* Corresponds to --color-deep-teal */
+}
+
+.processSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap-md); /* Keeping non-color vars */
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.processStep {
+  background-color: #101010; /* Corresponds to --color-darker-teal */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Shadow Light */
+  text-align: center;
+  position: relative;
+}
+
+.stepNumber {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #5ce1e6; /* Corresponds to --color-deep-teal */
+  color: #FFFFFF; /* White */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Shadow Medium */
+}
+
+.processStep h3 {
+  font-size: 1.4rem;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #5ce1e6; /* Corresponds to --color-deep-teal */
+}
+
+.processStep p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+
+/* Call to Action Section */
+.ctaSection {
+  padding: var(--padding-section-y) 0; /* Keeping non-color vars */
+  background-color: #2c769f; /* Corresponds to --color-deep-teal */
+  color: #FFFFFF; /* White */
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.ctaHeadline {
+  font-family: var(--font-family-headings); /* Keeping non-color vars */
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: #FFFFFF; /* White */
+}
+
+.ctaSubheadline {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  user-select: none;
+  background-color: #5ce1e6; /* Corresponds to --color-brighter-teal (Secondary from previous scheme) */
+  color: #222; /* White */
+  border: 1px solid #2c769f; /* Corresponds to --color-brighter-teal */
+}
+
+.ctaButton:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Shadow Light */
+}
+
+.ctaButton:focus {
+  outline: 2px solid #5ce1e6; /* Corresponds to --color-deep-teal */
+  outline-offset: 2px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .heroHeadline { font-size: 3.5rem; }
+  .sectionHeadline { font-size: 2.5rem; }
+  .ctaHeadline { font-size: 2.5rem; }
+  .animatedLargeText {
+    font-size: 2.5rem;
+    padding-left: 120px;
+    }
+    .introText{
+        flex: 1;
+    }
+    .introImage {
+        flex: 2;
+        width: 80%;
+    }
+  
+}
+
+@media (max-width: 992px) {
+  .heroHeadline { font-size: 3rem; }
+  .heroSubheadline { font-size: 1.1rem; }
+  .introContent { flex-direction: column; }
+  .introText, .introImage {
+    min-width: unset;
+    max-width: 100%;
+    text-align: center;
+  }
+  .introImage { margin-top: 30px; }
+  .featuresGrid, .processSteps {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .heroHeadline { font-size: 2.5rem; }
+  .heroSubheadline { font-size: 1rem; }
+  .sectionHeadline { font-size: 2.2rem; }
+  .sectionSubheadline { font-size: 1rem; }
+  .featuresGrid, .processSteps {
+    grid-template-columns: 1fr;
+  }
+  .featureItem h3, .processStep h3 { font-size: 1.2rem; }
+  .featureItem p, .processStep p { font-size: 0.9rem; }
+  .ctaHeadline { font-size: 2.2rem; }
+  .ctaSubheadline { font-size: 1rem; }
+  .heroCtaButton, .ctaButton {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .heroHeadline { font-size: 2rem; }
+  .heroSubheadline { font-size: 0.9rem; margin-bottom: 30px; }
+  .sectionHeadline { font-size: 1.8rem; }
+  .sectionSubheadline { margin-bottom: 40px; }
+  .introText p { font-size: 1rem; }
+  .featureIcon { font-size: 2rem; }
+  .featureItem h3, .processStep h3 { font-size: 1.1rem; }
+  .featureItem p { font-size: 0.85rem; }
+  .ctaHeadline { font-size: 1.8rem; }
+  .ctaSubheadline { font-size: 0.9rem; margin-bottom: 30px; }
+  .heroCtaButton, .ctaButton {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+  .heroBackgroundImage {
+    object-position: 80% 20%;
+  }
+
+  .animatedLargeText {
+    font-size: 3rem;
+  }
+}

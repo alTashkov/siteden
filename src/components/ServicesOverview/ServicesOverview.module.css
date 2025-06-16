@@ -1,0 +1,351 @@
+/* src/components/ServicesOverview/ServicesOverview.module.css */
+
+.servicesSection {
+  background-color: var(--color-header-bg); /* Dark background like the header */
+  padding: 80px 0;
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  background-image: radial-gradient(circle at center, var(--color-brighter-teal) 0%, #256a90 80%, #1a5170 100%);
+  overflow: hidden; /* Ensures content and shadows stay within bounds */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerContent {
+  width: 100%;
+  text-align: left; /* Align header content to left as per image */
+  margin-bottom: 50px; /* Space between header and main content area */
+  position: relative; /* For positioning exploreMoreButton */
+}
+
+.sectionHeadline {
+  font-size: 3.5rem; /* Larger font size for main headline */
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sectionSubheadline {
+  font-size: 1.3rem;
+  color: var(--color-white);
+  line-height: 1.6;
+  max-width: 60%; /* Constrain width of subheading */
+  margin-bottom: 30px;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.9;
+}
+
+.exploreMoreButton {
+  position: absolute;
+  right: 0;
+  background: linear-gradient(to right, var(--color-deep-teal), var(--color-brighter-teal));
+  color: var(--color-header-bg);
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: inline-flex; /* Use flex to align content if icons are added */
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Comfortaa', sans-serif;
+  bottom: 0;
+}
+
+.exploreMoreButton:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  opacity: 0.95;
+}
+
+
+/* Main content area containing tabs and service detail */
+.mainContentArea {
+  background-color: #101010; /* Slightly darker than header bg for nested depth */
+  border-radius: 25px;
+  padding: 40px;
+  width: 100%;
+  max-width: 1100px; /* Max width for the main container */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Prominent shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+}
+
+.tabNavigation {
+  display: flex;
+  justify-content: space-between; /* Distribute tabs evenly */
+  gap: 20px; /* Space between tabs */
+  margin-bottom: 40px; /* Space below tabs */
+  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+}
+
+.tabButton {
+  flex: 1; /* Tabs take equal width */
+  min-width: 180px; /* Minimum width for each tab */
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+  padding: 15px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comfortaa', sans-serif;
+  display: flex; /* For icon and text alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tabButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+
+@keyframes floatEffect {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.tabButton.activeTab {
+  background: linear-gradient(to right, var(--color-deep-teal), var(--color-brighter-teal)); /* Active tab gradient */
+  border-color: var(--color-deep-teal);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  color: var(--color-white);
+  transform: translateY(-5px);
+  animation: floatEffect 1.5s ease-in-out infinite alternate; /* Lift effect for active tab */
+}
+
+.tabButton.activeTab text {
+  animation: floatEffect 2s ease-in-out infinite alternate;
+}
+
+.letsChatButton {
+  animation: pop 1s ease-in infinite alternate;
+}
+
+.tabIcon {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Subtle glow for icons */
+}
+
+.tabIcon img {
+  height: 60px;
+  width: 60px;
+}
+
+/* Service Detail Content */
+.serviceDetailCard {
+  display: flex;
+  gap: 40px; /* Space between text and image */
+  align-items: center; /* Vertically center content */
+  text-align: left; /* Text content aligned left */
+}
+
+.serviceTextContent {
+  flex: 1; /* Text content takes available space */
+}
+
+.serviceDetailTitle {
+  font-size: 2.5rem; /* Large title for current service */
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.serviceDetailDescription {
+  font-size: 1.1rem;
+  color: var(--color-white);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.85;
+}
+
+.letsChatButton {
+  background-color: var(--color-deep-teal); /* Button with deep teal background */
+  color: var(--color-header-bg);
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  border: 1px solid var(--color-deep-teal);
+}
+
+.letsChatButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-deep-teal);
+  border-color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.serviceImageContainer {
+  flex-shrink: 0; /* Prevent image container from shrinking */
+  width: 400px; /* Fixed width for the image container */
+  height: 450px; /* Fixed height for the image container */
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative; /* For overlay */ /* Subtle border around image container */
+}
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the container */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.serviceImageContainer:hover .serviceImage {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  border-radius: 15px; /* Match container border-radius */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .serviceDetailCard {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  .serviceTextContent {
+    width: 100%; /* Allow text to take full width */
+  }
+  .serviceDetailTitle,
+  .serviceDetailDescription {
+    text-align: center; /* Center text when stacked */
+  }
+  .serviceImageContainer {
+    width: 80%; /* Adjust image width when stacked */
+    max-width: 450px;
+    height: 400px; /* Adjust height for stacking */
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 60px 0;
+  }
+  .container {
+    padding: 0 25px;
+  }
+  .sectionHeadline {
+    font-size: 2.8rem;
+  }
+  .sectionSubheadline {
+    font-size: 1.1rem;
+    max-width: 80%; /* Expand subheading width on smaller screens */
+    margin: 0 auto 30px; /* Center subheading */
+  }
+  .exploreMoreButton {
+    position: static; /* Remove absolute positioning */
+    margin-top: 20px; /* Add space below subheading */
+  }
+  .mainContentArea {
+    padding: 30px;
+  }
+  .tabNavigation {
+    flex-direction: column; /* Stack tabs vertically */
+    gap: 15px;
+  }
+  .tabButton {
+    min-width: unset; /* Remove min-width for full width stacking */
+    width: 100%;
+  }
+  .serviceDetailTitle {
+    font-size: 2rem;
+  }
+  .serviceDetailDescription {
+    font-size: 1rem;
+  }
+  .letsChatButton {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+  .serviceImageContainer {
+    width: 90%;
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  .sectionHeadline {
+    font-size: 2.2rem;
+  }
+  .sectionSubheadline {
+    font-size: 0.95rem;
+    max-width: 95%;
+  }
+  .mainContentArea {
+    padding: 20px;
+  }
+  .tabButton {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+  .serviceDetailTitle {
+    font-size: 1.8rem;
+  }
+  .serviceDetailDescription {
+    font-size: 0.9rem;
+  }
+  .letsChatButton {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+  .serviceImageContainer {
+    width: 100%;
+    height: 300px;
+  }
+}

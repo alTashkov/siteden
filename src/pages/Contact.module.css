@@ -1,0 +1,441 @@
+/* src/pages/Contact.module.css */
+
+/* Hero Section */
+.contactHero {
+  position: relative;
+  width: 100vw;
+  height: 400px; /* Consistent hero height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Crucial to clip falling letters */
+  color: var(--color-white);
+  text-align: center;
+  background-image: linear-gradient(135deg, var(--color-brighter-teal) 0%, var(--color-deep-teal) 100%);
+  box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.3);
+  padding-top: var(--header-height); /* Ensure content is below sticky header */
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1; /* Overlay on top of background, below letters and content */
+}
+
+/* New: Styles for falling letter images */
+.fallingLetter {
+  position: absolute;
+  width: 90px; /* Base size of the letter image */
+  height: 90px;
+  object-fit: contain; /* Ensure the full letter is visible */
+  z-index: 1; /* Same z-index as overlay, will appear on top if rendered after */
+  pointer-events: none; /* Allows interaction with elements below */
+  opacity: 0.7; /* Slightly transparent */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); /* Subtle glow */
+  /* Animation handled by JavaScript's 'style' attribute (top, left, transform) */
+}
+
+.heroBackgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area */
+  z-index: 0; /* Placed behind overlay and content */
+}
+
+
+.heroContent {
+  position: relative;
+  z-index: 2; /* Content is above everything */
+  max-width: 800px;
+  padding: 20px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.heroHeadline {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  font-family: 'Comfortaa', sans-serif;
+  z-index: 200;
+}
+
+.heroSubheadline {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.9;
+  z-index: 200;
+}
+
+/* Contact Form Section */
+.contactFormSection {
+  background-color: var(--color-header-bg); /* Dark background */
+  padding: 80px 0;
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 60px; /* Space between form and details */
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+}
+
+.formContainer {
+  flex: 2; /* Form takes more space */
+  min-width: 300px;
+  background-color: #101010;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.formHeadline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.formSubheadline {
+  font-size: 1.1rem;
+  color: var(--color-white);
+  margin-bottom: 30px;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.8;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--color-white);
+  opacity: 0.9;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-family: 'Comfortaa', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--color-brighter-teal);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 127, 106, 0.4);
+}
+
+.formTextarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 120px;
+}
+
+.submitButton {
+  background-color: var(--color-deep-teal);
+  color: var(--color-header-bg);
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  border: 1px solid var(--color-deep-teal);
+  cursor: pointer;
+  width: auto; /* Allow button to size based on content */
+}
+
+.sideImage {
+  width: 50px !important;
+  height: 50px !important;
+  transform: translateX(-10px)
+}
+
+.submitButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-deep-teal);
+  border-color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Contact Details Section */
+.contactDetails {
+  flex: 1; /* Details take less space */
+  min-width: 250px;
+  background-color: #101010;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsHeadline {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  color: var(--color-white);
+  opacity: 0.85;
+}
+
+.detailIcon {
+  margin-right: 15px;
+  color: var(--color-brighter-teal);
+  filter: drop-shadow(0 0 5px rgba(0, 127, 106, 0.4));
+}
+
+.detailItem a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.detailItem a:hover {
+  color: var(--color-brighter-teal);
+}
+
+.socialLinks {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 20px;
+}
+
+.socialLinks img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.socialLinks img:hover {
+    transform: translateY(-3px);
+}
+
+
+/* New: Message Box Styles */
+.messageBoxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Ensure it's on top of everything */
+}
+
+.messageBox {
+  background-color: #1A1A1A; /* Dark background */
+  color: var(--color-white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  max-width: 400px;
+  width: 90%; /* Responsive width */
+  font-family: 'Comfortaa', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative; /* For potential close icon positioning */
+  animation: fadeInScale 0.3s ease-out; /* Simple entry animation */
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.messageBoxContent {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.messageBoxButton {
+  background-color: var(--color-deep-teal);
+  color: var(--color-white);
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.messageBoxButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-deep-teal);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .contactHero {
+    height: 300px;
+    padding-top: var(--header-height-mobile);
+  }
+  /* Letter size remains consistent, as their positioning is relative */
+  .fallingLetter {
+    width: 45px; /* Slightly smaller on medium screens */
+    height: 45px;
+  }
+  .heroHeadline {
+    font-size: 2.5rem;
+  }
+  .heroSubheadline {
+    font-size: 1.1rem;
+  }
+  .container {
+    flex-direction: column; /* Stack form and details */
+    align-items: center;
+    gap: 40px;
+  }
+  .formContainer,
+  .contactDetails {
+    flex: none;
+    width: 100%;
+    max-width: 550px; /* Constrain width when stacked */
+    padding: 30px;
+  }
+  .formHeadline {
+    font-size: 2rem;
+  }
+  .detailsHeadline {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactHero {
+    height: 250px;
+  }
+  .fallingLetter {
+    width: 40px; /* Even smaller on tablets */
+    height: 40px;
+  }
+  .heroHeadline {
+    font-size: 2rem;
+  }
+  .heroSubheadline {
+    font-size: 1rem;
+  }
+  .contactFormSection {
+    padding: 60px 0;
+  }
+  .formHeadline {
+    font-size: 1.8rem;
+  }
+  .detailsHeadline {
+    font-size: 1.6rem;
+  }
+  .formInput,
+  .formTextarea,
+  .submitButton {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+  }
+  .detailItem {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactHero {
+    height: 200px;
+  }
+  .fallingLetter {
+    width: 35px; /* Smallest on mobile */
+    height: 35px;
+  }
+  .heroHeadline {
+    font-size: 1.8rem;
+  }
+  .heroSubheadline {
+    font-size: 0.9rem;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .formContainer,
+  .contactDetails {
+    padding: 25px;
+  }
+  .formHeadline {
+    font-size: 1.6rem;
+  }
+  .detailsHeadline {
+    font-size: 1.4rem;
+  }
+  .formLabel {
+    font-size: 0.9rem;
+  }
+  .detailIcon {
+    font-size: 1.5rem;
+  }
+  .submitButton {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}

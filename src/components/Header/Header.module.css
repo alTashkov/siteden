@@ -1,0 +1,279 @@
+/* src/components/Header/Header.module.css */
+
+.header {
+  background-color: transparent; /* Initially transparent */
+  padding: 1.2rem 0;
+  box-shadow: none; /* Initially no shadow */
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Smooth transition for background and shadow */
+  width: 100vw;
+  left: 0;
+  position: fixed;
+}
+
+/* New class for when the header is scrolled */
+.scrolledHeader {
+  background-color: var(--color-header-bg);
+  background-image: linear-gradient(to right, var(--color-header-bg) 0%, #101010 100%);
+  box-shadow: 0 8px 25px var(--color-header-shadow);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+  padding: 5px 0;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo img {
+  height: 50px;
+  transition: height 0.3s ease, transform 0.2s ease;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  align-self: center;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Navigation Styles - Font adjusted to Comfortaa */
+.nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-grow: 0;
+  justify-content: flex-end;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav li {
+  margin: 0 25px;
+  position: relative;
+}
+
+.nav a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: .95rem;
+  transition: all 0.3s ease-in-out;
+  padding: 10px 0;
+  position: relative;
+  display: block;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  isolation: auto;
+  font-family: 'Comfortaa', sans-serif; /* Explicitly set to Comfortaa here for consistency */
+}
+
+/* Gradient Underline Effect for Hover and Active */
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-image: linear-gradient(to right, var(--color-deep-teal), var(--color-brighter-teal));
+  border-radius: 1.5px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out, opacity 0.3s ease;
+  box-shadow: none;
+  opacity: 0;
+}
+
+.nav a:hover {
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  box-shadow: none;
+  opacity: 1;
+}
+
+/* Active Link */
+.nav .activeLink {
+  color: var(--color-white);
+  font-weight: 700;
+  transform: translateY(-2px);
+}
+
+.nav .activeLink::after {
+  transform: scaleX(1);
+  box-shadow: none;
+  opacity: 1;
+}
+
+
+/* Mobile Menu Toggle (Hamburger Icon) */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 35px;
+  height: 4px;
+  background-color: var(--color-white);
+  margin: 7px 0;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuToggleOpen .hamburgerLine:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menuToggleOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggleOpen .hamburgerLine:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* Mobile Navigation (Full-screen overlay style) */
+@media (max-width: 992px) {
+  .container {
+    padding: 0 20px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+    pointer-events: none;
+    z-index: 999;
+    margin-left: 0;
+    flex-grow: 0;
+  }
+
+  .navOpen {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    width: 90%;
+    max-width: 350px;
+    padding: 0;
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .nav li:last-child {
+    border-bottom: none;
+  }
+
+  .nav a {
+    color: var(--color-white);
+    display: block;
+    padding: 22px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-shadow: none;
+    letter-spacing: 1px;
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-family: 'Comfortaa', sans-serif; /* Apply to mobile nav links too */
+  }
+
+  /* Mobile: remove complex effects for mobile menu links */
+  .nav a:hover::before,
+  .nav a::before,
+  .nav a::after,
+  .nav a:not(.activeLink)::after {
+      display: none;
+  }
+
+  .nav a:hover,
+  .nav .activeLink {
+    color: var(--color-brighter-teal);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+
+  .nav .activeLink::after {
+      display: block;
+      bottom: -4px;
+      height: 2px;
+      width: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: linear-gradient(to right, var(--color-deep-teal), var(--color-brighter-teal));
+      box-shadow: none;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+}
+
+/* Hide logo text in mobile menu if logo img is present */
+.nav .logoText {
+    display: none;
+}

@@ -1,0 +1,58 @@
+/* src/styles/globals.css */
+
+/* Importing 'Comfortaa' font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-header-bg: #1A1A1A;
+  --color-header-shadow: rgba(0, 0, 0, 0.6);
+
+  --color-deep-teal: #5ce1e6;
+  --color-brighter-teal: #2c769f;
+  --color-white: #FFFFFF;
+  --color-dark-text: #212529;
+  --color-off-white-bg: #F8F9FA;
+  --color-darker-teal: #101010;
+  --color-subtle-gray: #E0E0E0;
+
+   --header-height: 90px; /* Approximate height of desktop header (1.2rem*2 padding + 55px logo height + border/margin) */
+  --header-height-mobile: 80px;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comfortaa', sans-serif; /* Applied globally to the body */
+  line-height: 1.6;
+  color: var(--color-dark-text);
+  background-color: var(--color-off-white-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.impactful {
+  color: var(--color-deep-teal); /* Apply deep teal color */
+  font-weight: 700; /* Make it bold for emphasis */
+}

@@ -1,0 +1,327 @@
+/* src/components/WhyChooseUs/WhyChooseUs.module.css */
+
+.whyChooseUsSection {
+  background-color: var(--color-header-bg); /* Matte black background */
+  padding: 80px 0;
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+
+  /* Subtle background pattern for texture */
+  background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M100 0L0 100V0H100Z" fill="%23222" opacity="0.08"/%3E%3C/svg%3E'); /* Diagonal lines */
+  background-size: 20px 20px;
+  background-position: top left;
+  background-blend-mode: overlay;
+}
+
+.container {
+  max-width: 1200px; /* Adjusted max-width to accommodate image */
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionHeadline {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sectionSubheadline {
+  font-size: 1.3rem;
+  color: var(--color-white);
+  margin-bottom: 60px;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.8;
+}
+
+/* New: Wrapper for content and image */
+.contentAndImageWrapper {
+  display: flex;
+  flex-direction: row; /* Arranges as: Left Cards | Image | Right Cards */
+  align-items: stretch; /* CRUCIAL: Makes children stretch to equal height */
+  gap: 60px; /* Space between columns */
+  margin-top: 40px; /* Space below subheadline */
+}
+
+/* New: Column for advantages cards */
+.advantagesColumn {
+  flex: 1; /* Each column takes equal space (1/3 of total) */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.advantageItem {
+  display: flex;
+  flex-direction: column; /* Ensure content stacks correctly within the stretched card */
+  align-items: flex-start; /* Align icon and text to top */
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.04); /* Subtle transparent background */
+  border-radius: 15px; /* Slightly more rounded */
+  padding: 20px; /* Reduced padding for smaller cards */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Adjusted shadow */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+  flex-grow: 1; /* CRUCIAL: Make each item grow to fill available height equally */
+}
+
+.advantageItem:hover {
+  transform: translateY(-5px); /* Reduced lift */
+  background-color: rgba(255, 255, 255, 0.06); /* Slightly more visible background on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Animated gradient border on hover */
+.advantageItem::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--color-deep-teal), var(--color-brighter-teal), var(--color-deep-teal));
+  background-size: 400% 400%;
+  border-radius: 17px; /* Matches slightly larger than item border-radius */
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease, background-position 0.6s ease;
+}
+
+.advantageItem:hover::before {
+  opacity: 1;
+  background-position: 100% 0%;
+  animation: borderAnimation 3s linear infinite;
+}
+
+@keyframes borderAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatEffect {
+  0% {
+    transform: translateY(0) rotate(-15deg);
+  }
+  100% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+}
+
+
+.iconCircle {
+  flex-shrink: 0;
+  width: 70px; /* Reduced icon circle size */
+  height: 70px; /* Reduced icon circle size */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(135deg, var(--color-deep-teal) 0%, var(--color-brighter-teal) 100%); /* Reverted to teal gradient */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Adjusted shadow */
+  margin-right: 20px; /* Reduced space between icon and text */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inner glow for the icon circle */
+.iconCircle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.advantageItem:hover .iconCircle::after {
+    transform: scale(1.5);
+    opacity: 0.1;
+}
+
+.advantageIcon {
+  display: flex; /* Ensure image is centered within the span */
+  align-items: center;
+  justify-content: center;
+}
+
+/* New rule for the actual image inside the tabIcon span */
+.advantageIcon img { /* Target the image directly */
+  width: 60px; /* Set specific width for the icon images */
+  height: 60px; /* Set specific height for the icon images */
+  object-fit: contain; /* Ensures the entire image is visible without cropping */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4)); /* Subtle glow for icons */
+}
+
+
+.advantageText {
+  flex-grow: 1;
+  display: flex; /* New: Make advantageText a flex container */
+  flex-direction: column; /* New: Stack content vertically */
+  justify-content: center; /* New: Vertically center content if space allows */
+}
+
+.advantageTitle {
+  font-size: 1.6rem; /* Adjusted title font size */
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 8px; /* Reduced margin */
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.advantageDescription {
+  font-size: 0.95rem; /* Adjusted description font size */
+  color: var(--color-white);
+  line-height: 1.5; /* Adjusted line height */
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.85; /* Slightly increased opacity */
+}
+
+/* Styles for the central image column */
+.whyChooseUsImageWrapper {
+  flex: 1; /* Image takes equal space (1/3 of total) */
+  display: flex;
+  align-items: center; /* Vertically center image if content is shorter */
+  justify-content: center;
+  position: relative;
+  border-radius: 20px;
+  overflow:visible ;
+  box-shadow: none; /* Removed box-shadow */
+}
+
+.whyChooseUsImage {
+  width: 130%;
+  animation: floatEffect 3s ease-in-out infinite alternate;
+  height: 100%; /* CRUCIAL: Image fills the height of the wrapper */
+  display: block;
+  object-fit: contain; /* CHANGED to 'cover' to fill space symmetrically */
+  border-radius: 20px; /* Ensures consistent rounded corners */
+  transition: transform 0.5s ease;
+}
+
+.whyChooseUsImageWrapper:hover .whyChooseUsImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+    /* Removed image overlay */
+    display: none; /* Ensure no overlay is rendered */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contentAndImageWrapper {
+    flex-direction: column; /* Stack content and image vertically on tablets */
+    align-items: center;
+    gap: 40px;
+  }
+  .advantagesColumn {
+    width: 100%; /* Allow columns to take full width when stacked */
+    max-width: 500px; /* Optional: limit max-width for stacked columns */
+    gap: 25px; /* Adjusted gap for stacked items */
+  }
+  .advantageItem {
+    flex-direction: row; /* Keep icon and text side-by-side within item on tablets */
+    text-align: left;
+    padding: 20px;
+  }
+  .iconCircle {
+    margin-bottom: 0; /* Remove vertical margin when side-by-side */
+    margin-right: 15px; /* Slightly less margin */
+    width: 60px; /* Adjusted size */
+    height: 60px; /* Adjusted size */
+  }
+  .advantageIcon img { /* Target the image directly */
+    width: 32px; /* Adjust size for tablet icons */
+    height: 32px;
+  }
+  .advantageTitle {
+    font-size: 1.4rem; /* Adjusted size */
+  }
+  .advantageDescription {
+    font-size: 0.9rem; /* Adjusted size */
+  }
+  .whyChooseUsImageWrapper {
+    flex: 0 0 auto; /* Reset flex grow/shrink */
+    max-width: 80%; /* Adjust max-width for image on tablets */
+    width: 100%; /* Make image container take full width available to it */
+    height: 400px; /* Fixed height for image on tablets when stacked */
+  }
+  .whyChooseUsImage {
+    height: 100%; /* Ensure image covers the fixed height */
+    object-fit: cover; /* Maintain 'cover' for stacking to avoid empty space */
+  }
+}
+
+@media (max-width: 768px) {
+  .whyChooseUsSection {
+    padding: 60px 0;
+  }
+  .sectionHeadline {
+    font-size: 2.2rem;
+  }
+  .sectionSubheadline {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+  .advantageItem {
+    padding: 15px;
+  }
+  .whyChooseUsImageWrapper {
+    height: 350px; /* Smaller fixed height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+  .sectionHeadline {
+    font-size: 1.8rem;
+  }
+  .sectionSubheadline {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  .advantageItem {
+    flex-direction: column; /* Stack icon and text vertically on smallest mobile */
+    text-align: center;
+    padding: 15px;
+  }
+  .iconCircle {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 50px; /* Even smaller icon circle */
+    height: 50px;
+  }
+  .advantageIcon img { /* Target the image directly */
+    width: 28px; /* Adjust size for mobile icons */
+    height: 28px;
+  }
+  .advantageTitle {
+    font-size: 1.2rem; /* Even smaller title */
+  }
+  .advantageDescription {
+    font-size: 0.85rem; /* Even smaller description */
+  }
+  .whyChooseUsImageWrapper {
+    max-width: 100%; /* Full width on smallest screens */
+    height: 300px; /* Smallest fixed height for image */
+  }
+}

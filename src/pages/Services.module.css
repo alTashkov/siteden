@@ -1,0 +1,481 @@
+/* src/pages/Services.module.css */
+
+/* Hero Section for Services Page */
+.servicesHero {
+  position: relative;
+  width: 100vw;
+  height: 450px; /* Reduced height compared to homepage hero */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--color-white);
+  text-align: center;
+  background-image: linear-gradient(135deg, var(--color-deep-teal) 0%, var(--color-brighter-teal) 100%);
+  box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.3);
+  padding-top: var(--header-height); /* Ensure content is below sticky header */
+}
+
+/* New style for the background image within the hero section */
+.heroBackgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area */
+  z-index: 0; /* Placed behind overlay and content */
+}
+
+/* New: Styles for the fox astronaut */
+.foxAstronaut {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  /* transform: translateY(-50%); Removed here as it's now part of JS transform */
+  left: 20px; /* Starting position from the left */
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Adjust size as needed */
+  object-fit: contain;
+  z-index: 1; /* Above background, below text content */
+  pointer-events: none; /* Allows clicks to pass through to elements below */
+  transition: top 0.3s ease-out; /* Added transition for the 'top' property for the bounce effect */
+}
+
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.heroHeadline {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.heroSubheadline {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.9;
+}
+
+/* Services Grid Section */
+.servicesGridSection {
+  background-color: var(--color-header-bg); /* Dark background for the section */
+  padding: 80px 0;
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.gridHeadline {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.gridSubheadline {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  margin-bottom: 60px;
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.8;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Each pair needs more space */
+  gap: 30px; /* Space between card pairs */
+  justify-content: center;
+  align-items: stretch; /* Ensure card pairs stretch to equal height */
+}
+
+/* New: Wrapper for the two "glued" cards */
+.serviceCardWrapper {
+  display: flex; /* Makes the two internal cards flex items */
+  flex-direction: row; /* Side-by-side on desktop */
+  background-color: var(--color-header-bg); /* Common background for the entire unit (base dark) */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden; /* Ensures contents stay within rounded borders */
+  transition: all 0.3s ease;
+  align-items: stretch; /* Ensure both internal cards stretch to full height of wrapper */
+}
+
+.serviceCardWrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Updated: The old .serviceCard is now .serviceCardMain */
+.serviceCardMain {
+  flex: 2; /* Main content takes more space (e.g., 2/3 width) */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-header-bg); /* Use #1A1A1A for main card */
+  /* Only round the left corners for the "glued" effect */
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* New: Styles for the price and features card */
+.serviceCardPriceSection {
+  flex: 1; /* Price section takes less space (e.g., 1/3 width) */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally within price section */
+  text-align: center; /* Center text within price section */
+  background-color: var(--color-darker-teal); /* Use #101010 for price section (darker) */
+  /* Only round the right corners for the "glued" effect */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.08); /* Separator line between the two halves */
+}
+
+/* MODIFIED: Wrapper for the prominent price display */
+.priceDisplayWrapper {
+  /* Removed circular styling and fixed dimensions as per request */
+  /* width: 120px; */
+  /* height: 120px; */
+  /* border-radius: 50%; */
+  /* background-image: linear-gradient(45deg, var(--color-brighter-teal) 0%, var(--color-deep-teal) 100%); */
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); */
+  
+  display: flex;
+  flex-direction: column; /* Stack heading, price, and duration */
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px; /* Space between price display and features */
+  flex-shrink: 0; /* Prevent shrinking */
+  padding: 10px 0; /* Added padding for vertical spacing */
+}
+
+/* New: Styling for the price heading (e.g., "STARTING AT") */
+.priceHeading {
+  font-size: 0.8rem; /* Adjusted font size for "STARTING AT" */
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7); /* Slightly muted white */
+  text-transform: uppercase; /* All caps */
+  margin-bottom: 2px; /* Small space between heading and price number */
+  font-family: 'Comfortaa', sans-serif;
+  letter-spacing: 0.05em; /* Slightly increased letter spacing */
+}
+
+/* MODIFIED: Styling for the main price number */
+.priceNumber {
+  font-size: 2.1rem; /* Increased font size for more pop */
+  font-weight: 800; /* Extra bold */
+  color: var(--color-white); /* White text for contrast */
+  line-height: 1; /* Keep line height tight */
+  font-family: 'Comfortaa', sans-serif;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Enhanced glow effect */
+  margin-bottom: 5px; /* Space between price number and duration */
+}
+
+/* MODIFIED: Styling for the duration text (e.g., /mo) */
+.priceDuration {
+  font-size: 1.1rem; /* Slightly larger than previous, but still smaller than price number */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85); /* Slightly brighter muted white */
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, var(--color-deep-teal) 0%, var(--color-brighter-teal) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.serviceIcon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.serviceTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: center; /* Keep centered within main card */
+}
+
+.serviceDescription {
+  font-size: 1rem;
+  color: var(--color-white);
+  line-height: 1.6;
+  flex-grow: 1; /* Allows description to grow to fill space */
+  font-family: 'Comfortaa', sans-serif;
+  opacity: 0.85;
+  text-align: center; /* Keep centered within main card */
+  margin-bottom: 25px; /* Add margin-bottom back for spacing with button */
+}
+
+/* REMOVED: .servicePrice rule as it's no longer necessary with new structure */
+
+
+/* New: Styles for bulleted features - aligned left within price section */
+.serviceFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color-white);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  text-align: left; /* Align features to left */
+  flex-grow: 1; /* Allow features list to grow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure it takes full width to respect text-align */
+}
+
+.serviceFeatures li {
+  margin-bottom: 10px; /* Increased space between features */
+  display: flex;
+  align-items: flex-start;
+  gap: 8px; /* Space between bullet and text */
+  font-family: 'Comfortaa', sans-serif;
+}
+
+/* New: Styling for the custom bullet character */
+.featureBullet {
+  color: var(--color-brighter-teal); /* Teal color for bullets */
+  font-size: 1.2rem; /* Make bullet slightly larger */
+  line-height: 1;
+  flex-shrink: 0; /* Prevent bullet from shrinking */
+}
+
+.learnMoreButton {
+  background-color: var(--color-deep-teal);
+  color: var(--color-header-bg);
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  display: inline-block;
+  font-family: 'Comfortaa', sans-serif;
+  border: 1px solid var(--color-deep-teal);
+  margin-top: auto; /* Push button to the bottom of the main card */
+}
+
+.learnMoreButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-deep-teal);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .servicesHero {
+    height: 350px;
+    padding-top: var(--header-height-mobile); /* Adjust padding for mobile header */
+  }
+  .foxAstronaut { /* Existing rule, keeping it */
+    width: 120px;
+    height: 120px;
+  }
+  .heroHeadline {
+    font-size: 2.5rem;
+  }
+  .heroSubheadline {
+    font-size: 1.1rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjusted min-width for stacked cards */
+    gap: 25px;
+  }
+
+  /* Modified: serviceCardWrapper to stack its children on smaller screens */
+  .serviceCardWrapper {
+    flex-direction: column; /* Stack main and price sections vertically on smaller screens */
+    border-radius: 15px; /* Apply full border-radius to the wrapper */
+  }
+
+  /* Modified: serviceCardMain for stacked corners */
+  .serviceCardMain {
+    border-radius: 15px 15px 0 0; /* Rounded top, flat bottom */
+    padding-bottom: 20px; /* Add bottom padding */
+  }
+
+  /* Modified: serviceCardPriceSection for stacked corners and border */
+  .serviceCardPriceSection {
+    border-left: none; /* Remove left border when stacked */
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* Add top border */
+    border-radius: 0 0 15px 15px; /* Flat top, rounded bottom */
+    padding-top: 20px; /* Add top padding */
+    align-items: center; /* Center content when stacked */
+  }
+
+  /* Text alignment for stacked elements */
+  .serviceTitle,
+  .serviceDescription {
+    text-align: center;
+  }
+
+  .priceHeading,
+  .priceNumber,
+  .priceDuration {
+    text-align: center; /* Center these when stacked */
+  }
+
+  .serviceFeatures {
+    text-align: center; /* Center features list when stacked */
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesHero {
+    height: 300px;
+  }
+  .foxAstronaut { /* Existing rule, keeping it */
+    width: 100px;
+    height: 100px;
+  }
+  .heroHeadline {
+    font-size: 2rem;
+  }
+  .heroSubheadline {
+    font-size: 1rem;
+  }
+  .gridHeadline {
+    font-size: 2.2rem;
+  }
+  .gridSubheadline {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .servicesGrid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 20px;
+  }
+  .serviceCardMain,
+  .serviceCardPriceSection {
+    padding: 25px;
+  }
+  /* Adjusted for smaller screens */
+  .priceDisplayWrapper {
+    margin-bottom: 20px;
+  }
+  .priceHeading {
+    font-size: 0.7rem;
+  }
+  .priceNumber {
+    font-size: 2.2rem;
+  }
+  .priceDuration {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesHero {
+    height: 250px;
+  }
+  .foxAstronaut { /* Existing rule, keeping it */
+    width: 80px;
+    height: 80px;
+  }
+  .heroHeadline {
+    font-size: 1.8rem;
+  }
+  .heroSubheadline {
+    font-size: 0.9rem;
+  }
+  .gridHeadline {
+    font-size: 1.8rem;
+  }
+  .gridSubheadline {
+    font-size: 0.9rem;
+  }
+  .serviceCardMain,
+  .serviceCardPriceSection { /* Applying padding to both main and price sections */
+    padding: 20px;
+  }
+  .iconWrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+  .serviceIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .serviceTitle {
+    font-size: 1.4rem;
+  }
+  .serviceDescription {
+    font-size: 0.9rem;
+  }
+  /* Further adjusted for mobile */
+  .priceDisplayWrapper {
+    margin-bottom: 15px;
+  }
+  .priceHeading {
+    font-size: 0.65rem;
+  }
+  .priceNumber {
+    font-size: 2rem;
+  }
+  .priceDuration {
+    font-size: 0.9rem;
+  }
+  .serviceFeatures li {
+    margin-bottom: 5px;
+  }
+}
