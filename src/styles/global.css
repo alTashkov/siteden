@@ -36,7 +36,6 @@ body {
   font-family: 'Comfortaa', sans-serif; /* Applied globally to the body */
   line-height: 1.6;
   color: var(--color-dark-text);
-  background-color: var(--color-off-white-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
