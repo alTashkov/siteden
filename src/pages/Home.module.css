@@ -90,4 +90,8 @@
   .heroContent {
     padding: 15px;
   }
+
+  .heroImage {
+    object-position: 65% 20%;
+  }
 }

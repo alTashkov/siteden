@@ -307,12 +307,13 @@
   .iconCircle {
     margin-right: 0;
     margin-bottom: 15px;
-    width: 50px; /* Even smaller icon circle */
-    height: 50px;
+    width: 60px; /* Even smaller icon circle */
+    height: 60px;
+    margin: 0 auto;
   }
   .advantageIcon img { /* Target the image directly */
-    width: 28px; /* Adjust size for mobile icons */
-    height: 28px;
+    width: 50px; /* Adjust size for mobile icons */
+    height: 50px;
   }
   .advantageTitle {
     font-size: 1.2rem; /* Even smaller title */
