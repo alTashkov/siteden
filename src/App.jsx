@@ -16,8 +16,14 @@ import ServicesOverview from "./components/ServicesOverview/ServicesOverview";
 import "./styles/global.css";
 import WebDevelopment from "./components/WebDevelopment/WebDevelopment";
 import FitnessCoach from "./pages/FitnessCoach";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
   return (
     <Router>
       {/* The Header component will appear on all pages */}

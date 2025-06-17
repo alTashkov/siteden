@@ -14,6 +14,11 @@ const AnimatedText = ({ textLine1, textLine2, start }) => {
   const totalLength = textLine1.length + textLine2.length;
 
   useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
     if (!start) return;
 
     if (index < totalLength) {
@@ -107,7 +112,9 @@ const FitnessCoach = () => {
         className={`${styles.introSection} ${styles.animatedSection2}`}
       >
         <div className={styles.container}>
-          <h2 className={styles.sectionHeadline}>Are You Missing Out on Clients?</h2>
+          <h2 className={styles.sectionHeadline}>
+            Are You Missing Out on Clients?
+          </h2>
           <p className={styles.sectionSubheadline}>
             Many talented fitness coaches struggle to stand out online. Without
             a powerful digital presence, you're leaving money on the table.
@@ -138,7 +145,9 @@ const FitnessCoach = () => {
       </section>
 
       {/* 3. CONSIDERATION/DESIRE: Key Benefits & Features */}
-      <section className={`${styles.featuresSection} ${styles.animatedSection2}`}>
+      <section
+        className={`${styles.featuresSection} ${styles.animatedSection2}`}
+      >
         <div className={styles.container}>
           <h2 className={styles.sectionHeadline}>
             What Makes Our Fitness Coach Websites Convert?
@@ -200,8 +209,8 @@ const FitnessCoach = () => {
             Your Path to a Powerful Online Presence
           </h2>
           <p className={styles.sectionSubheadline}>
-            We've streamlined our process to deliver your high-converting fitness
-            coach website efficiently and effectively.
+            We've streamlined our process to deliver your high-converting
+            fitness coach website efficiently and effectively.
           </p>
           <div className={styles.processSteps}>
             {[
@@ -242,9 +251,12 @@ const FitnessCoach = () => {
       {/* 5. ACTION: Final Call to Action */}
       <section className={`${styles.ctaSection} ${styles.animatedSection2}`}>
         <div className={styles.container}>
-          <h2 className={styles.ctaHeadline}>Ready to Transform Your Coaching Business?</h2>
+          <h2 className={styles.ctaHeadline}>
+            Ready to Transform Your Coaching Business?
+          </h2>
           <p className={styles.ctaSubheadline}>
-            Stop waiting for clients to find you. Let's build a website that actively brings them to you.
+            Stop waiting for clients to find you. Let's build a website that
+            actively brings them to you.
           </p>
           <Link to="/contact" className={styles.ctaButton}>
             Schedule Your Free Consultation
