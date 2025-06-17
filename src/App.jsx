@@ -38,11 +38,11 @@ function App() {
               </>
             }
           />
-          <Route path="services" element={<Services />}></Route>
-          <Route path="about" element={<About />}></Route>
-          <Route path="contact" element={<Contact />}></Route>
-          <Route path="fitness-coach-websites" element={<FitnessCoach />}></Route>
-          <Route path="services/web-development" element={<WebDevelopment />}></Route>
+          <Route path="/services" element={<Services />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/fitness-coach-websites" element={<FitnessCoach />}></Route>
+          <Route path="/services/web-development" element={<WebDevelopment />}></Route>
           {/* Future pages would go here, e.g.:
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
