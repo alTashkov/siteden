@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
@@ -16,24 +11,15 @@ import Services from "./pages/Services";
 import ServicesOverview from "./components/ServicesOverview/ServicesOverview";
 import WebDevelopment from "./components/WebDevelopment/WebDevelopment";
 import FitnessCoach from "./pages/FitnessCoach";
+import ScrollToTop from "./components/ScrollToTop";
+
 import "./styles/global.css";
 
-function ScrollToTopOnRouteChange() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname]);
-
-  return null; // does not render anything
-}
-
-function AppRoutes() {
+function App() {
   return (
-    <>
-      <ScrollToTopOnRouteChange />
+    <Router>
+      <ScrollToTop />
       <Header />
-
       <main>
         <Routes>
           <Route
@@ -54,14 +40,6 @@ function AppRoutes() {
           <Route path="/services/web-development" element={<WebDevelopment />} />
         </Routes>
       </main>
-    </>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <AppRoutes />
     </Router>
   );
 }
